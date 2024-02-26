@@ -1,0 +1,46 @@
+Feature file :
+----------------
+
+Feature : Compose and send the mail through gmail account
+Scenario : User logs in and send email
+Given There is a user who visits gmail login page
+And User login with username “---------” and password “---------“.
+When User sends an email to “---------------------------------” with subject “Automation QA test       for Incubyte”.¬¬¬
+Then  The email appears in the sent folder of gmail with subject “Incubyte”.
+
+
+Step defination file :
+--------------------------
+class TestGmailFunctionality
+
+{
+@GIVEN “There is a user who visits gmail login page.”
+         Public void loginPage() {
+            Driver.get(https://www.gmail.com);
+}
+@And “User login with username and password .
+         Public void loginCredentials() {
+            Driver.findElement(By.xpath(“value”)).sendKeys(“username”);
+            Driver.findElement(By.xpath(“value”)).sendKeys(“password”);
+            Driver.findElement(By.xpath(“value”)).click();
+}
+
+
+@When User sends an email with subject for incubity”
+¬¬¬         Public void composeMail() {
+            Driver.findElement(By.xpath(“value”)).sendKeys(“Automation QA test       for Incubyte”);
+            Driver.findElement(By.xpath(“value”)).click();
+}
+
+@Then  The email appears in the sent folder of gmail with subject .
+¬¬¬         Public void mailVerify() {
+WebElement  message = driver.findElement(By.xpath(“value”));
+String text = message.getText();
+String expectText = “Incubyte”;
+
+Assert.assertEquals(text, expectText);
+
+
+}
+
+
